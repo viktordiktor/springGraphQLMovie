@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/moviesDB?useSSL=false&serverTimezone=UTC
+    username: root
+    password: Viktor1032003
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+    properties:
+      hibernate:
+        '[format_sql]': true
+    hibernate:
+      ddl-auto: update
+
+  graphql:
+    graphiql:
+      enabled: true
