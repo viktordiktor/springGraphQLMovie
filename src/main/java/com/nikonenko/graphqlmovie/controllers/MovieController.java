@@ -1,9 +1,11 @@
 package com.nikonenko.graphqlmovie.controllers;
 
 import com.nikonenko.graphqlmovie.models.Movie;
+import com.nikonenko.graphqlmovie.models.MovieRequest;
 import com.nikonenko.graphqlmovie.services.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
@@ -21,5 +23,10 @@ public class MovieController {
     @QueryMapping("getMovie")
     public Movie getMovieById(@Argument Long id){
         return movieService.getMovieByID(id);
+    }
+
+    @MutationMapping("addMovie")
+    public Movie addMovie(@Argument MovieRequest movieRequest){
+        return movieService.saveMovie(movieRequest);
     }
 }

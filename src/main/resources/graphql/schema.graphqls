@@ -3,10 +3,21 @@ type Query {
     getMovie(id:Int): Movie!
 }
 
+type Mutation {
+    addMovie(movieRequest: MovieRequest): Movie!
+}
+
 type Movie {
     id: ID!
     title: String!
     director: String!
-    releaseYear: Int!
-    movieCast: [String]!
+    releaseYear: Int
+    movieCast: [String]
+}
+
+input MovieRequest {
+    title: String!
+    director: String!
+    releaseYear: Int
+    movieCast: [String]
 }
