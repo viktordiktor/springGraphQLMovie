@@ -1,10 +1,12 @@
 type Query {
     getAllMovies: [Movie]
-    getMovie(id:Int): Movie!
+    getMovie(id:ID!): Movie!
 }
 
 type Mutation {
     addMovie(movieRequest: MovieRequest): Movie!
+    editMovie(id:ID! ,movieRequest: MovieRequest): Movie!
+    deleteMovie(id:ID!): ApiResponse!
 }
 
 type Movie {
@@ -13,6 +15,11 @@ type Movie {
     director: String!
     releaseYear: Int
     movieCast: [String]
+}
+
+type ApiResponse{
+    message: String!
+    success: Boolean!
 }
 
 input MovieRequest {
