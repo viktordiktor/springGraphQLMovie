@@ -22,8 +22,7 @@ public class GlobalExceptionHandler extends DataFetcherExceptionResolverAdapter 
                     .path(env.getExecutionStepInfo().getPath())
                     .location(env.getField().getSourceLocation())
                     .build();
-        } else {
-            return null;
         }
+        return null;
     }
 }

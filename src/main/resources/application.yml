@@ -15,3 +15,13 @@ spring:
   graphql:
     graphiql:
       enabled: true
+
+  flyway:
+    enabled: true
+    url: jdbc:mysql://localhost:3306/moviesDB
+    user: root
+    password: Viktor1032003
+    locations: classpath:db/migration
+    baselineOnMigrate: true
+    baselineVersion: 1
+    table: flyway_schema_history_movies
