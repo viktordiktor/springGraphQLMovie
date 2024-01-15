@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/moviesDB?useSSL=false&serverTimezone=UTC
-    username: root
-    password: Viktor1032003
+    url: jdbc:mysql://mysqldb:3306/moviesDB?autoReconnect=true&useSSL=false
+    username: user
+    password: pass
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: true
@@ -18,9 +18,9 @@ spring:
 
   flyway:
     enabled: true
-    url: jdbc:mysql://localhost:3306/moviesDB
-    user: root
-    password: Viktor1032003
+    url: jdbc:mysql://mysqldb:3306/moviesDB
+    user: user
+    password: pass
     locations: classpath:db/migration
     baselineOnMigrate: true
     baselineVersion: 1

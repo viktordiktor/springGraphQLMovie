@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+  mysqldb:
+    image: mysql:8.0
+    container_name: mysqldb
+    networks:
+      - springboot-graphql-net
+    environment:
+      - MYSQL_ROOT_PASSWORD=Viktor1032003
+      - MYSQL_DATABASE=moviesDB
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=pass
+    volumes:
+      - mysqldb_data:/var/lib/mysql
+    restart: always
+
+  springboot-graphql-container:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: springboot-graphql-container
+    networks:
+      - springboot-graphql-net
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb
+    restart: always
+
+networks:
+  springboot-graphql-net:
+
+volumes:
+  mysqldb_data:
