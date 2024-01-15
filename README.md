@@ -24,4 +24,4 @@ To write queries, you can utilize a convenient toolkit that I have integrated in
    
     You can get more information about queries using the file resources/graphql/schema.graphqls
 
-![Query example](./query example.png)
+![Query example](./query_example.png)
