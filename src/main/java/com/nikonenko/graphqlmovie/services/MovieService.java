@@ -7,8 +7,11 @@ import com.nikonenko.graphqlmovie.repositories.MovieRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 @RequiredArgsConstructor
@@ -16,9 +19,14 @@ import java.util.List;
 public class MovieService {
     private final MovieRepository movieRepository;
     private final ModelMapper modelMapper;
+    private final RedisTemplate<String, Object> redisTemplate;
 
     public List<Movie> getAllMovies(){
-        return movieRepository.findAll();
+        List<Movie> movies = StreamSupport
+                .stream(movieRepository.findAll().spliterator(), false)
+                .collect(Collectors.toList());
+        redisTemplate.opsForList().leftPushAll("movies", movies);
+        return movies;
     }
 
     public Movie getMovieByID(Long id){

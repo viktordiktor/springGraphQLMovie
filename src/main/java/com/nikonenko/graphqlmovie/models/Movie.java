@@ -1,42 +1,34 @@
 package com.nikonenko.graphqlmovie.models;
 
-import jakarta.persistence.CollectionTable;
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
+import java.io.Serializable;
 import java.util.List;
 
-@Entity
-@Table(schema = "movie")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Movie {
+@RedisHash("movie")
+public class Movie implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
-    @Column(name = "title")
+    @Indexed
     private String title;
 
-    @Column(name = "director")
+    @Indexed
     private String director;
 
-    @Column(name = "year")
+    @Indexed
     private Integer releaseYear;
 
-    @ElementCollection
-    @CollectionTable(name = "movie_cast")
+    @Indexed
     private List<String> movieCast;
 }

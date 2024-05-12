@@ -1,27 +1,8 @@
 spring:
-  datasource:
-    url: jdbc:mysql://mysqldb:3306/moviesDB?autoReconnect=true&useSSL=false
-    username: user
-    password: pass
-  jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
-    show-sql: true
-    properties:
-      hibernate:
-        '[format_sql]': true
-    hibernate:
-      ddl-auto: update
+  redis:
+    host: redis
+    port: 6379
 
   graphql:
     graphiql:
       enabled: true
-
-  flyway:
-    enabled: true
-    url: jdbc:mysql://mysqldb:3306/moviesDB
-    user: user
-    password: pass
-    locations: classpath:db/migration
-    baselineOnMigrate: true
-    baselineVersion: 1
-    table: flyway_schema_history_movies
