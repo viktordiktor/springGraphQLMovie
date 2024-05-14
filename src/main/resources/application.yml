@@ -1,8 +1,24 @@
 spring:
-  redis:
-    host: redis
-    port: 6379
+  datasource:
+    url: jdbc:postgresql://postgresdb:5432/moviesdb?allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+    username: def_user
+    password: pass
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        '[format_sql]': true
+    hibernate:
+      ddl-auto: update
 
   graphql:
     graphiql:
       enabled: true
+
+  flyway:
+    enabled: true
+    url: jdbc:postgresql://postgresdb:5432/moviesdb
+    user: def_user
+    password: pass
+    locations: classpath:db/migration
+    table: flyway_schema_history_movies

@@ -1,8 +1,8 @@
-# Spring Boot + GraphQL + MySQL + Docker Compose + Flyway *Movies API*
+# Spring Boot + GraphQL + PostgreSQL + Redis + Docker Compose + Flyway *Movies API*
 
 ---  
 
-This application is designed for viewing, adding, deleting, modifying, and searching movies. It utilizes **GraphQL**, an open-source query language and data manipulation language, to build web-oriented programming interfaces. The project utilizes **Spring for GraphQL**, which is based on **GraphQL Java**.
+This application is designed for viewing, adding, deleting, modifying, and searching movies. It utilizes **GraphQL**, an open-source query language and data manipulation language, to build web-oriented programming interfaces. The project utilizes **Spring for GraphQL**, which is based on **GraphQL Java**. I also implemented caching with the help of **Redis**.
 
 ---
 
